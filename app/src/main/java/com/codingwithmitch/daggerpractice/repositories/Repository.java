@@ -2,7 +2,8 @@ package com.codingwithmitch.daggerpractice.repositories;
 
 import android.util.Log;
 
-import com.codingwithmitch.daggerpractice.persistence.RecipeDao;
+import com.codingwithmitch.daggerpractice.persistence.FakeDatabase;
+
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -12,18 +13,18 @@ public class Repository {
 
     private static final String TAG = "Repository";
 
-    private final RecipeDao recipeDao;
+    private final FakeDatabase fakeDatabase;
 
     @Inject
-    public Repository(RecipeDao recipeDao) {
-        this.recipeDao = recipeDao;
+    public Repository(FakeDatabase fakeDatabase) {
+        this.fakeDatabase = fakeDatabase;
         Log.d(TAG, "Repository: repository is working...");
 
-        if(recipeDao == null){
-            Log.d(TAG, "Repository: dao is null.");
+        if(fakeDatabase == null){
+            Log.d(TAG, "Repository: fakeDatabase is null.");
         }
         else{
-            Log.d(TAG, "Repository: dao is ready to use.");
+            Log.d(TAG, "Repository: fakeDatabase is ready to use.\n" + fakeDatabase.testFakeDb());
         }
     }
 
