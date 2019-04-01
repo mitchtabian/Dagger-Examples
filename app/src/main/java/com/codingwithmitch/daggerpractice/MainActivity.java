@@ -1,7 +1,7 @@
 package com.codingwithmitch.daggerpractice;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
+import dagger.android.support.DaggerAppCompatActivity;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends DaggerAppCompatActivity {
 
 
     @Inject
@@ -21,17 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-		
-		AndroidInjection.inject(this);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-
-		viewModel = ViewModelProviders.of(this, providerFactory).get(MainViewModel.class);
+        viewModel = ViewModelProviders.of(this, providerFactory).get(MainViewModel.class);
     }
 
 }
-
 
 
 
