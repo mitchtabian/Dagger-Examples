@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.di;
+package com.codingwithmitch.daggerpractice.di.module;
 
 import com.codingwithmitch.daggerpractice.viewmodels.MainViewModel;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;

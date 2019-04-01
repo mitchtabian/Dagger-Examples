@@ -13,7 +13,6 @@ import javax.inject.Inject;
 
 public class MainActivity extends DaggerAppCompatActivity {
 
-
     @Inject
     ViewModelProviderFactory providerFactory;
 
@@ -28,6 +27,7 @@ public class MainActivity extends DaggerAppCompatActivity {
     }
 
 }
+
 
 
 
