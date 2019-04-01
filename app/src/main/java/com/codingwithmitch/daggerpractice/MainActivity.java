@@ -23,11 +23,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 		
 		AndroidInjection.inject(this);
-		
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        viewModel = ViewModelProviders.of(this, providerFactory).get(MainViewModel.class);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		viewModel = ViewModelProviders.of(this, providerFactory).get(MainViewModel.class);
     }
 
 }
