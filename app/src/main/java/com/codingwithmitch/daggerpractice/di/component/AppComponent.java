@@ -26,8 +26,6 @@ import dagger.android.support.AndroidSupportInjectionModule;
 })
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
-    void inject(BaseApplication application);
-
     @Component.Builder
     interface Builder {
         @BindsInstance
