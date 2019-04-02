@@ -4,7 +4,6 @@ import android.app.Application;
 
 
 import com.codingwithmitch.daggerpractice.di.module.ActivityBuilder;
-import com.codingwithmitch.daggerpractice.di.module.ContextModule;
 import com.codingwithmitch.daggerpractice.di.module.FragmentBuilder;
 import com.codingwithmitch.daggerpractice.di.module.ViewModelModule;
 
@@ -20,7 +19,6 @@ import dagger.android.support.DaggerApplication;
 
 @Singleton
 @Component(modules = {
-        ContextModule.class,
         AndroidInjectionModule.class,
         ActivityBuilder.class,
         ViewModelModule.class
