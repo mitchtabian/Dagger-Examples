@@ -8,16 +8,16 @@ import javax.inject.Inject;
 
 import androidx.lifecycle.ViewModel;
 
-public class MainViewModel extends ViewModel {
+public class PostsViewModel extends ViewModel {
 
-    private static final String TAG = "MainViewModel";
+    private static final String TAG = "PostsViewModel";
 
     private final Repository repository;
 
     @Inject
-    public MainViewModel(Repository repository) {
+    public PostsViewModel(Repository repository) {
         this.repository = repository;
-        Log.d(TAG, "MainViewModel: view model is working...");
+        Log.d(TAG, "view model is working...");
     }
 }
 

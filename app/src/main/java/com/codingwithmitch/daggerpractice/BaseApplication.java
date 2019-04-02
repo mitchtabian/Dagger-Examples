@@ -7,7 +7,6 @@ import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
 
 
-
 /**
  * NEW WAY
  */
@@ -29,31 +28,6 @@ public class BaseApplication extends DaggerApplication {
 
 
 }
-
-
-///**
-// * OLD WAY
-// */
-//public class BaseApplication extends Application implements HasActivityInjector {
-//
-//    @Inject
-//    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
-//
-//    @Override
-//    public void onCreate() {
-//        super.onCreate();
-//
-//        AppComponent appInjector = DaggerAppComponent.builder().application(this).build();
-//        appInjector.inject(this);
-//    }
-//
-//
-//    @Override
-//    public AndroidInjector<Activity> activityInjector() {
-//        return dispatchingAndroidInjector;
-//    }
-//
-//}
 
 
 
