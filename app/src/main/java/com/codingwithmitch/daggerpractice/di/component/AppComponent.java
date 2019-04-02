@@ -3,7 +3,7 @@ package com.codingwithmitch.daggerpractice.di.component;
 import android.app.Application;
 
 import com.codingwithmitch.daggerpractice.BaseApplication;
-import com.codingwithmitch.daggerpractice.di.module.ActivityBindingModule;
+import com.codingwithmitch.daggerpractice.di.module.ActivityBuilder;
 import com.codingwithmitch.daggerpractice.di.module.AppModule;
 import com.codingwithmitch.daggerpractice.di.module.ContextModule;
 import com.codingwithmitch.daggerpractice.di.module.ViewModelModule;
@@ -21,7 +21,7 @@ import dagger.android.support.DaggerApplication;
         ContextModule.class,
         AppModule.class,
         AndroidSupportInjectionModule.class,
-        ActivityBindingModule.class,
+        ActivityBuilder.class,
         ViewModelModule.class
 })
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
