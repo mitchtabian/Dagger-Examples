@@ -4,7 +4,7 @@ import com.codingwithmitch.daggerpractice.di.component.AppComponent;
 import com.codingwithmitch.daggerpractice.di.component.DaggerAppComponent;
 
 import dagger.android.AndroidInjector;
-import dagger.android.DaggerApplication;
+import dagger.android.support.DaggerApplication;
 
 /**
  * NEW WAY
