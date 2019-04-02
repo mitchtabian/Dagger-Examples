@@ -1,6 +1,5 @@
 package com.codingwithmitch.daggerpractice.di.module;
 
-
 import android.app.Application;
 
 import com.codingwithmitch.daggerpractice.persistence.FakeDatabase;
