@@ -43,7 +43,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
     // Dagger
-    def dagger_version = "2.15"
+    def dagger_version = "2.21"
 
     // Dagger2 core
     implementation "com.google.dagger:dagger:$dagger_version"
