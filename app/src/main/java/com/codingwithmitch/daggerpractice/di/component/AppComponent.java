@@ -25,7 +25,6 @@ import dagger.android.support.DaggerApplication;
         AppModule.class,
         AndroidInjectionModule.class,
         ActivityBuilder.class,
-        FragmentBuilder.class,
         ViewModelModule.class
 
 })
