@@ -6,6 +6,7 @@ import com.codingwithmitch.daggerpractice.di.component.DaggerAppComponent;
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
 
+
 /**
  * NEW WAY
  */
@@ -17,6 +18,7 @@ public class BaseApplication extends DaggerApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
     }
 
     @Override
@@ -26,3 +28,14 @@ public class BaseApplication extends DaggerApplication {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
