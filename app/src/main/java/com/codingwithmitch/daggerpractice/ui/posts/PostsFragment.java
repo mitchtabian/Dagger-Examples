@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.ui;
+package com.codingwithmitch.daggerpractice.ui.posts;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,18 +8,20 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.codingwithmitch.daggerpractice.R;
-import com.codingwithmitch.daggerpractice.viewmodels.PostsViewModel;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import dagger.android.support.DaggerFragment;
+
 
 public class PostsFragment extends DaggerFragment {
 
@@ -49,7 +51,22 @@ public class PostsFragment extends DaggerFragment {
         Log.d(TAG, "onViewCreated: PostsFragment is in view.");
 
         // do stuff
-        Toast.makeText(getActivity(), "The fragment is in view", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Posts fragment is in view", Toast.LENGTH_SHORT).show();
+
+        subscribeObservers();
+    }
+
+    private void subscribeObservers(){
+        Log.d(TAG, "subscribeObservers: subscribing observers.");
+        viewModel.getPosts().observe(this, new Observer<List<Post>>() {
+            @Override
+            public void onChanged(List<Post> posts) {
+                Log.d(TAG, "onChanged: retrieved " + posts.size() + " posts.");
+//                for(Post post: posts){
+//                    Log.d(TAG, "onChanged: " + post.getTitle());
+//                }
+            }
+        });
     }
 }
 

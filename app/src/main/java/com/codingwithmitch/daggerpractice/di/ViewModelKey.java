@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.di.module;
+package com.codingwithmitch.daggerpractice.di;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,14 +1,12 @@
-package com.codingwithmitch.daggerpractice.models;
-
+package com.codingwithmitch.daggerpractice.ui.todos;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "posts")
-public class Post {
+@Entity(tableName = "todos")
+public class Todo {
 
     @PrimaryKey
     @NonNull
@@ -17,8 +15,7 @@ public class Post {
     private String title;
     private String body;
 
-
-    public Post(int user_id, int id, String title, String body) {
+    public Todo(int user_id, int id, String title, String body) {
         this.user_id = user_id;
         this.id = id;
         this.title = title;
@@ -26,8 +23,9 @@ public class Post {
     }
 
     @Ignore
-    public Post() {
+    public Todo() {
     }
+
 
     public int getUser_id() {
         return user_id;
@@ -61,6 +59,10 @@ public class Post {
         this.body = body;
     }
 }
+
+
+
+
 
 
 

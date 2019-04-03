@@ -1,6 +1,6 @@
-package com.codingwithmitch.daggerpractice.persistence;
+package com.codingwithmitch.daggerpractice.persistence.posts;
 
-import com.codingwithmitch.daggerpractice.models.Post;
+import com.codingwithmitch.daggerpractice.ui.posts.Post;
 
 import java.util.List;
 

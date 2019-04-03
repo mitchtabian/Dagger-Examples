@@ -1,12 +1,7 @@
-package com.codingwithmitch.daggerpractice.di.component;
+package com.codingwithmitch.daggerpractice.di;
 
 import android.app.Application;
 
-
-import com.codingwithmitch.daggerpractice.di.module.ActivityBuilder;
-import com.codingwithmitch.daggerpractice.di.module.AppModule;
-import com.codingwithmitch.daggerpractice.di.module.FragmentBuilder;
-import com.codingwithmitch.daggerpractice.di.module.ViewModelModule;
 
 import javax.inject.Singleton;
 
@@ -22,16 +17,18 @@ import dagger.android.support.DaggerApplication;
 @Component(modules = {
         AppModule.class,
         AndroidInjectionModule.class,
-        ActivityBuilder.class,
-        ViewModelModule.class
-
+        MainActivityModule.class,
+        MainViewModelsModule.class
 })
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
     @Component.Builder
     interface Builder {
+
         @BindsInstance
         Builder application(Application application);
+
         AppComponent build();
+
     }
 }
