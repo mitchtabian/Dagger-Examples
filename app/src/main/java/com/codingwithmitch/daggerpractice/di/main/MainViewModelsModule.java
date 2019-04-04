@@ -1,7 +1,9 @@
-package com.codingwithmitch.daggerpractice.di;
+package com.codingwithmitch.daggerpractice.di.main;
 
-import com.codingwithmitch.daggerpractice.ui.posts.PostsViewModel;
-import com.codingwithmitch.daggerpractice.ui.todos.TodosViewModel;
+import com.codingwithmitch.daggerpractice.di.ViewModelKey;
+
+import com.codingwithmitch.daggerpractice.ui.main.posts.PostsViewModel;
+import com.codingwithmitch.daggerpractice.ui.main.todos.TodosViewModel;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 import androidx.lifecycle.ViewModel;
@@ -28,3 +30,4 @@ public abstract class MainViewModelsModule {
     public abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelProviderFactory viewModelFactory);
 
 }
+

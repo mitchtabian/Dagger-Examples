@@ -1,7 +1,7 @@
 package com.codingwithmitch.daggerpractice.network.todos;
 
 
-import com.codingwithmitch.daggerpractice.ui.todos.Todo;
+import com.codingwithmitch.daggerpractice.ui.main.todos.Todo;
 
 import java.util.List;
 

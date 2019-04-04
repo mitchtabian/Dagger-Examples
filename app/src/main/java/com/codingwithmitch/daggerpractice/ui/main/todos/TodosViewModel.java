@@ -1,10 +1,9 @@
-package com.codingwithmitch.daggerpractice.ui.todos;
+package com.codingwithmitch.daggerpractice.ui.main.todos;
 
 import android.util.Log;
 
-import com.codingwithmitch.daggerpractice.repositories.posts.PostsRepository;
 import com.codingwithmitch.daggerpractice.repositories.todos.TodosRepository;
-import com.codingwithmitch.daggerpractice.ui.posts.Post;
+import com.codingwithmitch.daggerpractice.ui.main.posts.Post;
 
 import java.util.List;
 

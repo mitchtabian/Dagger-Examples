@@ -2,10 +2,9 @@ package com.codingwithmitch.daggerpractice.repositories.posts;
 
 import android.util.Log;
 
-
-import com.codingwithmitch.daggerpractice.ui.posts.Post;
 import com.codingwithmitch.daggerpractice.network.posts.PostsApi;
 import com.codingwithmitch.daggerpractice.persistence.posts.PostDao;
+import com.codingwithmitch.daggerpractice.ui.main.posts.Post;
 
 
 import java.util.List;

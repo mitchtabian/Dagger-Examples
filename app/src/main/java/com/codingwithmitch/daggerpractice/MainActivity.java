@@ -5,8 +5,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.codingwithmitch.daggerpractice.ui.posts.PostsFragment;
-import com.codingwithmitch.daggerpractice.ui.todos.TodosFragment;
+import com.codingwithmitch.daggerpractice.ui.main.posts.PostsFragment;
+import com.codingwithmitch.daggerpractice.ui.main.todos.TodosFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;

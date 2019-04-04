@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.codingwithmitch.daggerpractice.network.posts.PostsApi;
 import com.codingwithmitch.daggerpractice.network.todos.TodosApi;
+import com.codingwithmitch.daggerpractice.network.users.UsersApi;
 import com.codingwithmitch.daggerpractice.persistence.AppDatabase;
 import com.codingwithmitch.daggerpractice.persistence.posts.PostDao;
 import com.codingwithmitch.daggerpractice.persistence.todos.TodoDao;
@@ -69,6 +70,11 @@ public class AppModule {
         return retrofit.create(TodosApi.class);
     }
 
+    @Singleton
+    @Provides
+    static UsersApi provideUsersApi(Retrofit retrofit){
+        return retrofit.create(UsersApi.class);
+    }
 }
 
 

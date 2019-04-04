@@ -1,7 +1,7 @@
-package com.codingwithmitch.daggerpractice.di;
+package com.codingwithmitch.daggerpractice.di.main;
 
-import com.codingwithmitch.daggerpractice.ui.posts.PostsFragment;
-import com.codingwithmitch.daggerpractice.ui.todos.TodosFragment;
+import com.codingwithmitch.daggerpractice.ui.main.posts.PostsFragment;
+import com.codingwithmitch.daggerpractice.ui.main.todos.TodosFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

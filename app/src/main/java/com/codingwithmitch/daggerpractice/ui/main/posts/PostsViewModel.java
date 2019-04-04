@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.ui.posts;
+package com.codingwithmitch.daggerpractice.ui.main.posts;
 
 import android.util.Log;
 

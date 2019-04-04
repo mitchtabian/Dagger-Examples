@@ -1,7 +1,7 @@
 package com.codingwithmitch.daggerpractice.network.posts;
 
-import com.codingwithmitch.daggerpractice.ui.posts.Post;
 
+import com.codingwithmitch.daggerpractice.ui.main.posts.Post;
 
 import java.util.List;
 

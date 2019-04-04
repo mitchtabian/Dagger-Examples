@@ -1,5 +1,7 @@
 package com.codingwithmitch.daggerpractice.viewmodels;
 
+import com.codingwithmitch.daggerpractice.di.ActivityScope;
+
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -9,7 +11,8 @@ import javax.inject.Singleton;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-@Singleton
+//@Singleton
+@ActivityScope
 public class ViewModelProviderFactory implements ViewModelProvider.Factory {
 
     private static final String TAG = "ViewModelProviderFactor";

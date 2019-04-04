@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.codingwithmitch.daggerpractice.network.todos.TodosApi;
 import com.codingwithmitch.daggerpractice.persistence.todos.TodoDao;
-import com.codingwithmitch.daggerpractice.ui.todos.Todo;
+import com.codingwithmitch.daggerpractice.ui.main.todos.Todo;
 
 import java.util.List;
 

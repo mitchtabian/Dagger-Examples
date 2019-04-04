@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.ui.todos;
+package com.codingwithmitch.daggerpractice.ui.main.todos;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
