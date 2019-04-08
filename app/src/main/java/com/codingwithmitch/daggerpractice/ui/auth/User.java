@@ -1,10 +1,25 @@
-package com.codingwithmitch.daggerpractice.ui.login;
+package com.codingwithmitch.daggerpractice.ui.auth;
+
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class User {
 
+    @SerializedName("id")
+    @Expose
     private int id;
+
+    @SerializedName("username")
+    @Expose
     private String username;
+
+    @SerializedName("email")
+    @Expose
     private String email;
+
+    @SerializedName("website")
+    @Expose
     private String website;
 
     public User(int id, String username, String email, String website) {
@@ -13,7 +28,6 @@ public class User {
         this.email = email;
         this.website = website;
     }
-
 
     public User() {
     }

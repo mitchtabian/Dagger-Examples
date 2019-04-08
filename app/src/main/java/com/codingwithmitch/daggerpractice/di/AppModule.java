@@ -1,18 +1,20 @@
 package com.codingwithmitch.daggerpractice.di;
 
 import android.app.Application;
+import android.graphics.drawable.Drawable;
 
-import com.codingwithmitch.daggerpractice.network.posts.PostsApi;
-import com.codingwithmitch.daggerpractice.network.todos.TodosApi;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
+import com.codingwithmitch.daggerpractice.R;
 import com.codingwithmitch.daggerpractice.network.users.UsersApi;
-import com.codingwithmitch.daggerpractice.persistence.AppDatabase;
-import com.codingwithmitch.daggerpractice.persistence.posts.PostDao;
-import com.codingwithmitch.daggerpractice.persistence.todos.TodoDao;
+import com.codingwithmitch.daggerpractice.ui.auth.User;
 import com.codingwithmitch.daggerpractice.util.Constants;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
-import androidx.room.Room;
+import androidx.core.content.ContextCompat;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -20,32 +22,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-import static com.codingwithmitch.daggerpractice.persistence.AppDatabase.DATABASE_NAME;
-
 @Module
 public class AppModule {
-
-    @Singleton
-    @Provides
-    static AppDatabase provideAppDatabase(Application application){
-        return Room.databaseBuilder(
-                application,
-                AppDatabase.class,
-                DATABASE_NAME
-        ).build();
-    }
-
-    @Singleton
-    @Provides
-    static PostDao providePostsDao(AppDatabase db){
-        return db.getPostsDao();
-    }
-
-    @Singleton
-    @Provides
-    static TodoDao provideTodosDao(AppDatabase db){
-        return db.getTodosDao();
-    }
 
     @Singleton
     @Provides
@@ -57,23 +35,45 @@ public class AppModule {
                 .build();
     }
 
-
-    @Singleton
-    @Provides
-    static PostsApi providePostsApi(Retrofit retrofit){
-        return retrofit.create(PostsApi.class);
-    }
-
-    @Singleton
-    @Provides
-    static TodosApi provideTodosApi(Retrofit retrofit){
-        return retrofit.create(TodosApi.class);
-    }
-
     @Singleton
     @Provides
     static UsersApi provideUsersApi(Retrofit retrofit){
         return retrofit.create(UsersApi.class);
+    }
+
+    @Provides
+    @Singleton
+    static RequestOptions provideRequestOptions(){
+        return RequestOptions
+                .placeholderOf(R.drawable.white_background)
+                .error(R.drawable.white_background);
+    }
+
+    @Provides
+    @Singleton
+    static RequestManager provideGlideInstance(Application application, RequestOptions requestOptions){
+        return Glide.with(application)
+                .setDefaultRequestOptions(requestOptions);
+    }
+
+    @Singleton
+    @Provides
+    static String provideRandomString(){
+        return "This is a random string from the APP module.";
+    }
+
+
+    @Singleton
+    @Provides
+    static Drawable getDrawable(Application application){
+        return ContextCompat.getDrawable(application, R.drawable.logo);
+    }
+
+    @Singleton
+    @Provides
+    @Named("app_user")
+    static User provideUser(){
+        return new User();
     }
 }
 

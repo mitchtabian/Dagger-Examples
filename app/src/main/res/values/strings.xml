@@ -2,4 +2,5 @@
     <string name="app_name">DaggerPractice</string>
     <string name="posts">Posts</string>
     <string name="todos">Todos</string>
+    <string name="logout">logout</string>
 </resources>

@@ -1,68 +1,103 @@
-package com.codingwithmitch.daggerpractice.ui.login;
+package com.codingwithmitch.daggerpractice.ui.auth;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.codingwithmitch.daggerpractice.BaseApplication;
-import com.codingwithmitch.daggerpractice.MainActivity;
+
+import com.bumptech.glide.RequestManager;
 import com.codingwithmitch.daggerpractice.R;
-import com.codingwithmitch.daggerpractice.di.ActivityScope;
-import com.codingwithmitch.daggerpractice.di.login.LoginComponent;
-import com.codingwithmitch.daggerpractice.util.Resource;
+import com.codingwithmitch.daggerpractice.ui.main.MainActivity;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import dagger.android.AndroidInjection;
-import dagger.android.support.AndroidSupportInjection;
 import dagger.android.support.DaggerAppCompatActivity;
 
-@ActivityScope
-public class LoginActivity extends DaggerAppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "LoginActivity";
+public class AuthActivity extends DaggerAppCompatActivity implements
+        View.OnClickListener
+{
 
-    private LoginViewModel viewModel;
+    private static final String TAG = "DaggerExample";
+
+    private AuthViewModel viewModel;
     private EditText userId;
     private ProgressBar progressBar;
 
     @Inject
     ViewModelProviderFactory providerFactory;
 
+    @Inject
+    Drawable logo;
+
+    @Inject
+    RequestManager requestManager;
+
+    @Inject
+    @Named("login_user")
+    User loginUser;
+
+    @Inject
+    @Named("app_user")
+    User appUser;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_auth);
         userId = findViewById(R.id.user_id_input);
         progressBar = findViewById(R.id.progress_bar);
 
         findViewById(R.id.login_button).setOnClickListener(this);
 
-        viewModel = ViewModelProviders.of(this, providerFactory).get(LoginViewModel.class);
+        viewModel = ViewModelProviders.of(this, providerFactory).get(AuthViewModel.class);
 
         subscribeObservers();
+
+
+        // Dagger demos
+//        if(logo == null){
+//            Log.d(TAG, "onCreate: drawable is null.");
+//        }
+//        else {
+//            Log.d(TAG, "onCreate: drawable is NOT null.");
+//            setLogo();
+//        }
+//
+//        Log.d(TAG, "onCreate: login user: " + loginUser);
+//        Log.d(TAG, "onCreate: app user: " + appUser);
+    }
+
+    private void setLogo(){
+        requestManager
+                .load(logo)
+                .into((ImageView)findViewById(R.id.login_logo));
     }
 
     private void subscribeObservers(){
-        viewModel.observeAuthState().observe(this, new Observer<Resource<User>>() {
+        viewModel.observeAuthState().observe(this, new Observer<AuthResource<User>>() {
             @Override
-            public void onChanged(Resource<User> userResource) {
-                if(userResource != null){
-                    switch (userResource.status){
+            public void onChanged(AuthResource<User> userAuthResource) {
+                if(userAuthResource != null){
+                    switch (userAuthResource.status){
                         case LOADING:{
                             showProgressBar(true);
                             break;
                         }
 
-                        case SUCCESS:{
+                        case AUTHENTICATED:{
                             showProgressBar(false);
                             onLoginSuccess();
                             break;
@@ -72,14 +107,19 @@ public class LoginActivity extends DaggerAppCompatActivity implements View.OnCli
                             showProgressBar(false);
                             break;
                         }
+
+                        case NOT_AUTHENTICATED:{
+                            showProgressBar(false);
+                            break;
+                        }
                     }
                 }
-
             }
         });
     }
 
     private void onLoginSuccess(){
+        Log.d(TAG, "onLoginSuccess: login successful!");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -89,7 +129,7 @@ public class LoginActivity extends DaggerAppCompatActivity implements View.OnCli
         if (TextUtils.isEmpty(userId.getText().toString())) {
             return;
         }
-        viewModel.attemptLogin(Integer.parseInt(userId.getText().toString()));
+        viewModel.authenticate(Integer.parseInt(userId.getText().toString()));
     }
 
     @Override
@@ -110,4 +150,5 @@ public class LoginActivity extends DaggerAppCompatActivity implements View.OnCli
             progressBar.setVisibility(View.GONE);
         }
     }
+
 }
