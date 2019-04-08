@@ -29,7 +29,7 @@ public interface AppComponent extends AndroidInjector<BaseApplication> {
 
     SessionComponent.Builder sessionBuilder();
 
-    SessionManager getSessionManager();
+    SessionManager sessionManager();
 
     @Component.Builder
     interface Builder {
