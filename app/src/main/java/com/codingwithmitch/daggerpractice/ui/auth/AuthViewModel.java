@@ -21,7 +21,6 @@ public class AuthViewModel extends ViewModel {
     private final SessionManager sessionManager;
 
     private CompositeDisposable disposables = new CompositeDisposable();
-    private MutableLiveData<Resource<User>> authUser = new MutableLiveData<>();
 
     @Inject
     public AuthViewModel(SessionManager sessionManager) {
