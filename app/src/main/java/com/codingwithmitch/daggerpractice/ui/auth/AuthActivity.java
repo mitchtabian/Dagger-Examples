@@ -68,13 +68,13 @@ public class AuthActivity extends DaggerAppCompatActivity implements
 
 
         // Dagger demos
-//        if(logo == null){
-//            Log.d(TAG, "onCreate: drawable is null.");
-//        }
-//        else {
-//            Log.d(TAG, "onCreate: drawable is NOT null.");
-//            setLogo();
-//        }
+        if(logo == null){
+            Log.d(TAG, "onCreate: drawable is null.");
+        }
+        else {
+            Log.d(TAG, "onCreate: drawable is NOT null.");
+            setLogo();
+        }
 //
 //        Log.d(TAG, "onCreate: login user: " + loginUser);
 //        Log.d(TAG, "onCreate: app user: " + appUser);
