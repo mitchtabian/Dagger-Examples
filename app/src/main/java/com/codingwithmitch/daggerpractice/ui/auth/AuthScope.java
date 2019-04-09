@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.di.session;
+package com.codingwithmitch.daggerpractice.ui.auth;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -9,5 +9,5 @@ import javax.inject.Scope;
 @Scope
 @Documented
 @Retention(value = RetentionPolicy.RUNTIME)
-public @interface SessionScope {
+public @interface AuthScope {
 }

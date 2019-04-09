@@ -4,7 +4,9 @@ package com.codingwithmitch.daggerpractice.di;
 import android.app.Application;
 
 import com.codingwithmitch.daggerpractice.BaseApplication;
-import com.codingwithmitch.daggerpractice.di.session.SessionComponent;
+import com.codingwithmitch.daggerpractice.ui.auth.AuthSessionComponent;
+import com.codingwithmitch.daggerpractice.AuthSessionManager;
+import com.codingwithmitch.daggerpractice.ui.main.MainComponent;
 
 import javax.inject.Singleton;
 
@@ -14,7 +16,6 @@ import dagger.Component;
 import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
-
 
 @Singleton
 @Component(
@@ -27,9 +28,9 @@ import dagger.android.support.AndroidSupportInjectionModule;
         })
 public interface AppComponent extends AndroidInjector<BaseApplication> {
 
-    SessionComponent.Builder sessionBuilder();
+    AuthSessionManager authSessionManager();
 
-    SessionManager sessionManager();
+//    MainComponent.Builder mainBuilder();
 
     @Component.Builder
     interface Builder {

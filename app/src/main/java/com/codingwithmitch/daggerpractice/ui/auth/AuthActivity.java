@@ -45,13 +45,13 @@ public class AuthActivity extends DaggerAppCompatActivity implements
     @Inject
     RequestManager requestManager;
 
-    @Inject
-    @Named("login_user")
-    User loginUser;
+//    @Inject
+//    @Named("login_user")
+//    User loginUser;
 
-    @Inject
-    @Named("app_user")
-    User appUser;
+//    @Inject
+//    @Named("app_user")
+//    User appUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

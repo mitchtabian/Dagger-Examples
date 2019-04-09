@@ -65,16 +65,16 @@ public class AppModule {
 
     @Singleton
     @Provides
-    static Drawable getDrawable(Application application){
+    static Drawable provideAppDrawable(Application application){
         return ContextCompat.getDrawable(application, R.drawable.logo);
     }
 
-    @Singleton
-    @Provides
-    @Named("app_user")
-    static User provideUser(){
-        return new User();
-    }
+//    @Singleton
+//    @Provides
+//    @Named("app_user")
+//    static User provideUser(){
+//        return new User();
+//    }
 }
 
 

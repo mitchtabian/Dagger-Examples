@@ -7,28 +7,48 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.codingwithmitch.daggerpractice.BaseActivity;
+import com.codingwithmitch.daggerpractice.BaseApplication;
 import com.codingwithmitch.daggerpractice.R;
-import com.codingwithmitch.daggerpractice.di.SessionManager;
+import com.codingwithmitch.daggerpractice.ui.main.profile.ProfileFragment;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import androidx.annotation.Nullable;
-import dagger.android.support.DaggerAppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity  {
 
     private static final String TAG = "DaggerExample";
 
+//    @Inject
+//    @Named("main_string")
+//    String someRandomString;
+
+//    @Inject
+//    @Named("login_user")
+//    User user;
+
     @Inject
-    @Named("main_string")
-    String someRandomString;
+    LinearLayoutManager layoutManager;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "onCreate: " + someRandomString);
+//        Log.d(TAG, "onCreate: " + someRandomString);
+//        Log.d(TAG, "onCreate: authenticated user: " + user.getEmail());
+
+        Log.d(TAG, "onCreate: layout manger: " + layoutManager);
+
+        init();
+    }
+
+    private void init(){
+        // do not add first fragment to backstack
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_container, new ProfileFragment(), getString(R.string.fragment_profile))
+                .commit();
     }
 
     @Override
@@ -49,6 +69,7 @@ public class MainActivity extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
 
 

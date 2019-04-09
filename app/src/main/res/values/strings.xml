@@ -3,4 +3,7 @@
     <string name="posts">Posts</string>
     <string name="todos">Todos</string>
     <string name="logout">logout</string>
+
+    <string name="fragment_profile">Profile Fragment</string>
+    <string name="fragment_posts">Posts Fragment</string>
 </resources>

@@ -9,10 +9,16 @@ import dagger.Provides;
 @Module
 public class AuthModule {
 
-    @Provides
-    @Named("login_user")
-    static User provideUser(){
-        return new User();
-    }
+//    @AuthScope
+//    @Provides
+//    @Named("login_user")
+//    static User provideUser(){
+//        return new User();
+//    }
 
+//    @Provides
+//    @Named("login_user")
+//    static User provideUser(User user){
+//        return user;
+//    }
 }

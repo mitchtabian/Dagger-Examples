@@ -1,11 +1,11 @@
-package com.codingwithmitch.daggerpractice.di;
+package com.codingwithmitch.daggerpractice;
 
 import android.util.Log;
 
-import com.codingwithmitch.daggerpractice.di.session.SessionComponent;
 import com.codingwithmitch.daggerpractice.network.users.UsersApi;
 import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
 import com.codingwithmitch.daggerpractice.ui.auth.User;
+import com.codingwithmitch.daggerpractice.ui.main.MainComponent;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -17,22 +17,19 @@ import androidx.lifecycle.Observer;
 import io.reactivex.schedulers.Schedulers;
 
 @Singleton
-public class SessionManager  {
+public class AuthSessionManager {
 
     private static final String TAG = "DaggerExample";
 
     // inject
     private final UsersApi usersApi;
-    private final SessionComponent.Builder sessionComponentBuilder;
 
-
-    private SessionComponent sessionComponent;
+    // data
     private MediatorLiveData<AuthResource<User>> cachedUser = new MediatorLiveData<>();
 
     @Inject
-    public SessionManager(UsersApi usersApi, SessionComponent.Builder sessionComponentBuilder) {
+    public AuthSessionManager(UsersApi usersApi) {
         this.usersApi = usersApi;
-        this.sessionComponentBuilder = sessionComponentBuilder;
     }
 
     public void authenticateWithId(final int userId) {
@@ -64,21 +61,27 @@ public class SessionManager  {
                 .subscribeOn(Schedulers.io()));
     }
 
+
     private void createSession(User user) {
-        sessionComponent = sessionComponentBuilder
-                .user(user)
-                .build();
-        sessionComponent.inject(this);
         cachedUser.setValue(AuthResource.authenticated(user));
     }
 
     public boolean isLoggedIn() {
-        return sessionComponent != null;
+        return !isCachedUserNull();
+    }
+
+    private boolean isCachedUserNull(){
+        if(cachedUser == null){
+            return true;
+        }
+        if(cachedUser.getValue() == null){
+            return true;
+        }
+        return false;
     }
 
     public void logOut() {
         Log.d(TAG, "logOut: logging out...");
-        sessionComponent = null;
         cachedUser.setValue(AuthResource.<User>logout());
     }
 

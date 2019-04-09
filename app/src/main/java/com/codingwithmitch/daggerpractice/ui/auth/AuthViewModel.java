@@ -2,13 +2,11 @@ package com.codingwithmitch.daggerpractice.ui.auth;
 
 import android.util.Log;
 
-import com.codingwithmitch.daggerpractice.di.SessionManager;
-import com.codingwithmitch.daggerpractice.util.Resource;
+import com.codingwithmitch.daggerpractice.AuthSessionManager;
 
 import javax.inject.Inject;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -18,12 +16,12 @@ public class AuthViewModel extends ViewModel {
     private static final String TAG = "DaggerExample";
 
     // inject
-    private final SessionManager sessionManager;
+    private final AuthSessionManager sessionManager;
 
     private CompositeDisposable disposables = new CompositeDisposable();
 
     @Inject
-    public AuthViewModel(SessionManager sessionManager) {
+    public AuthViewModel(AuthSessionManager sessionManager) {
         this.sessionManager = sessionManager;
         Log.d(TAG, "AuthViewModel: viewmodel is working...");
     }
