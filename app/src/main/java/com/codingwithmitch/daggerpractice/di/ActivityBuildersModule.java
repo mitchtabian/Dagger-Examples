@@ -20,22 +20,22 @@ import dagger.android.ContributesAndroidInjector;
 import dagger.multibindings.ClassKey;
 import dagger.multibindings.IntoMap;
 
-//@Module(
-//        subcomponents = {
-//                MainComponent.class
-//        })
-@Module
+@Module(
+        subcomponents = {
+                MainComponent.class
+        })
+//@Module
 public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract AuthActivity contributeAuthActivity();
 
-//    @Binds
-//    @IntoMap
-//    @ClassKey(MainActivity.class)
-//    abstract AndroidInjector.Factory<?> bindMainActivityInjectorFactory(MainComponent.Factory factory);
+    @Binds
+    @IntoMap
+    @ClassKey(MainActivity.class)
+    abstract AndroidInjector.Factory<?> bindMainActivityInjectorFactory(MainComponent.Factory factory);
 
-    @MainScope
-    @ContributesAndroidInjector(modules = {MainModule.class, MainFragmentBuildersModule.class})
-    abstract MainActivity contributeMainActivity();
+//    @MainScope
+//    @ContributesAndroidInjector(modules = {MainModule.class, MainFragmentBuildersModule.class})
+//    abstract MainActivity contributeMainActivity();
 }
