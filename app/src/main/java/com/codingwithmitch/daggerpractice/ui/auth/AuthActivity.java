@@ -9,16 +9,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.RequestManager;
 import com.codingwithmitch.daggerpractice.R;
+import com.codingwithmitch.daggerpractice.models.User;
 import com.codingwithmitch.daggerpractice.ui.main.MainActivity;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
@@ -62,6 +63,8 @@ public class AuthActivity extends DaggerAppCompatActivity implements
 
         findViewById(R.id.login_button).setOnClickListener(this);
 
+        setTitle("Auth Scope");
+
         viewModel = ViewModelProviders.of(this, providerFactory).get(AuthViewModel.class);
 
         subscribeObservers();
@@ -104,7 +107,12 @@ public class AuthActivity extends DaggerAppCompatActivity implements
                         }
 
                         case ERROR:{
+                            Log.e(TAG, "onChanged: " + userAuthResource.message);
                             showProgressBar(false);
+                            Toast.makeText(AuthActivity.this,
+                                    userAuthResource.message + "\nDid you enter a number between 0 and 10?",
+                                    Toast.LENGTH_SHORT)
+                                    .show();
                             break;
                         }
 
@@ -129,7 +137,7 @@ public class AuthActivity extends DaggerAppCompatActivity implements
         if (TextUtils.isEmpty(userId.getText().toString())) {
             return;
         }
-        viewModel.authenticate(Integer.parseInt(userId.getText().toString()));
+        viewModel.authenticateWithId(Integer.parseInt(userId.getText().toString()));
     }
 
     @Override

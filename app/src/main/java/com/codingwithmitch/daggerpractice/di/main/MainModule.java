@@ -1,16 +1,13 @@
-package com.codingwithmitch.daggerpractice.ui.main;
+package com.codingwithmitch.daggerpractice.di.main;
 
-import com.codingwithmitch.daggerpractice.di.AppComponent;
-import com.codingwithmitch.daggerpractice.ui.auth.AuthScope;
-import com.codingwithmitch.daggerpractice.ui.auth.User;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
+import com.codingwithmitch.daggerpractice.network.main.MainApi;
+import com.codingwithmitch.daggerpractice.ui.main.MainActivity;
+import com.codingwithmitch.daggerpractice.ui.main.posts.PostRecyclerAdapter;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import dagger.Module;
 import dagger.Provides;
+import retrofit2.Retrofit;
 
 @Module
 public class MainModule {
@@ -19,6 +16,19 @@ public class MainModule {
     @Provides
     static LinearLayoutManager provideLayoutManager(MainActivity activity) {
         return new LinearLayoutManager(activity);
+    }
+
+    @MainScope
+    @Provides
+    static MainApi provideMainApi(Retrofit retrofit){
+        return retrofit.create(MainApi.class);
+    }
+
+
+    @MainScope
+    @Provides
+    static PostRecyclerAdapter provideAdapter(){
+        return new PostRecyclerAdapter();
     }
 
 //    @MainScope

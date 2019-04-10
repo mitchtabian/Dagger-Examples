@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.ui.auth;
+package com.codingwithmitch.daggerpractice.models;
 
 
 import com.google.gson.annotations.Expose;

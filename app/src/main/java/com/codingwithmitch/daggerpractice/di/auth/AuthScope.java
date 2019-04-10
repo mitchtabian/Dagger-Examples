@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.ui.auth;
+package com.codingwithmitch.daggerpractice.di.auth;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

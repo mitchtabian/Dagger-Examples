@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.codingwithmitch.daggerpractice.di.AppComponent;
 import com.codingwithmitch.daggerpractice.ui.auth.AuthActivity;
 import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
-import com.codingwithmitch.daggerpractice.ui.auth.User;
-import com.codingwithmitch.daggerpractice.ui.main.MainComponent;
+import com.codingwithmitch.daggerpractice.models.User;
 
 import javax.inject.Inject;
 
@@ -23,7 +21,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
     private static final String TAG = "DaggerExample";
 
     @Inject
-    public AuthSessionManager sessionManager;
+    public SessionManager sessionManager;
 
 
     @Override

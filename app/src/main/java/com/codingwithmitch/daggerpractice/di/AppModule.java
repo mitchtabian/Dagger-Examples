@@ -7,11 +7,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.codingwithmitch.daggerpractice.R;
-import com.codingwithmitch.daggerpractice.network.users.UsersApi;
-import com.codingwithmitch.daggerpractice.ui.auth.User;
 import com.codingwithmitch.daggerpractice.util.Constants;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import androidx.core.content.ContextCompat;
@@ -33,12 +30,6 @@ public class AppModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-    }
-
-    @Singleton
-    @Provides
-    static UsersApi provideUsersApi(Retrofit retrofit){
-        return retrofit.create(UsersApi.class);
     }
 
     @Provides

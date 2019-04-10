@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import com.codingwithmitch.daggerpractice.R;
 import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
-import com.codingwithmitch.daggerpractice.ui.auth.User;
+import com.codingwithmitch.daggerpractice.models.User;
+import com.codingwithmitch.daggerpractice.ui.auth.AuthViewModel;
+import com.codingwithmitch.daggerpractice.ui.main.posts.PostsViewModel;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
@@ -30,6 +32,10 @@ public class ProfileFragment extends DaggerFragment {
     private ProfileViewModel viewModel;
     private TextView email, username, website;
 
+    @Inject
+    public ProfileFragment() {
+    }
+
 
     @Nullable
     @Override
@@ -48,7 +54,8 @@ public class ProfileFragment extends DaggerFragment {
     }
 
     private void subscribeObservers(){
-        viewModel.getAuthenticatedUser().observe(this, new Observer<AuthResource<User>>() {
+        viewModel.getAuthenticatedUser().removeObservers(getViewLifecycleOwner());
+        viewModel.getAuthenticatedUser().observe(getViewLifecycleOwner(), new Observer<AuthResource<User>>() {
             @Override
             public void onChanged(AuthResource<User> userAuthResource) {
                 if(userAuthResource != null){
