@@ -1,6 +1,7 @@
 package com.codingwithmitch.daggerpractice.di;
 
-import com.codingwithmitch.daggerpractice.viewmodels.MainViewModel;
+import com.codingwithmitch.daggerpractice.ui.main.posts.PostsViewModel;
+import com.codingwithmitch.daggerpractice.ui.main.profile.ProfileViewModel;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 import androidx.lifecycle.ViewModel;
@@ -9,15 +10,10 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
 
-@Module
-public abstract class ViewModelModule {
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(MainViewModel.class)
-    public abstract ViewModel bindMainViewModel(MainViewModel viewModel);
+@Module
+public abstract class ViewModelFactoryModule {
 
     @Binds
     public abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelProviderFactory viewModelFactory);
-
 }
