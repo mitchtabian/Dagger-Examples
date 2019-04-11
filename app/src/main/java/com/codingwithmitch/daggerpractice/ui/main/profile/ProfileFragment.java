@@ -10,8 +10,6 @@ import android.widget.TextView;
 import com.codingwithmitch.daggerpractice.R;
 import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
 import com.codingwithmitch.daggerpractice.models.User;
-import com.codingwithmitch.daggerpractice.ui.auth.AuthViewModel;
-import com.codingwithmitch.daggerpractice.ui.main.posts.PostsViewModel;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
@@ -26,15 +24,11 @@ public class ProfileFragment extends DaggerFragment {
 
     private static final String TAG = "DaggerExample";
 
-    @Inject
-    ViewModelProviderFactory providerFactory;
-
     private ProfileViewModel viewModel;
     private TextView email, username, website;
 
     @Inject
-    public ProfileFragment() {
-    }
+    ViewModelProviderFactory providerFactory;
 
 
     @Nullable
@@ -45,6 +39,7 @@ public class ProfileFragment extends DaggerFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onViewCreated: ProfileFragment. " + this);
         email = view.findViewById(R.id.email);
         username = view.findViewById(R.id.username);
         website = view.findViewById(R.id.website);

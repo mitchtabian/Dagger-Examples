@@ -15,6 +15,7 @@ import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,23 +24,22 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import dagger.android.support.DaggerFragment;
 
-public class PostsFragment extends Fragment {
+public class PostsFragment extends DaggerFragment {
 
     private static final String TAG = "DaggerExample";
 
     private PostsViewModel viewModel;
     private RecyclerView recyclerView;
 
-//    @Inject
-    private PostRecyclerAdapter adapter;
+    @Inject
+    @Named("PostRecyclerAdapter")
+    PostRecyclerAdapter adapter;
 
     @Inject
     ViewModelProviderFactory providerFactory;
 
-    @Inject
-    public PostsFragment() {
-    }
 
     @Nullable
     @Override
@@ -49,7 +49,9 @@ public class PostsFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onViewCreated: PostsFragment. " + this);
         recyclerView = view.findViewById(R.id.recycler_view);
+
         viewModel = ViewModelProviders.of(this, providerFactory).get(PostsViewModel.class);
 
         initRecyclerView();
@@ -87,11 +89,11 @@ public class PostsFragment extends Fragment {
     }
 
     private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: ADAPTER: " + adapter);
+        Log.d(TAG, "initRecyclerView: adapter: " + adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         VerticalSpaceItemDecoration itemDecoration = new VerticalSpaceItemDecoration(15);
         recyclerView.addItemDecoration(itemDecoration);
-        adapter = new PostRecyclerAdapter();
+//        adapter = new PostRecyclerAdapter();
         recyclerView.setAdapter(adapter);
     }
 

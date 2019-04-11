@@ -1,9 +1,14 @@
 package com.codingwithmitch.daggerpractice.di.main;
 
+import com.codingwithmitch.daggerpractice.R;
 import com.codingwithmitch.daggerpractice.network.main.MainApi;
 import com.codingwithmitch.daggerpractice.ui.main.MainActivity;
 import com.codingwithmitch.daggerpractice.ui.main.posts.PostRecyclerAdapter;
 
+import javax.inject.Named;
+
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import dagger.Module;
 import dagger.Provides;
@@ -27,9 +32,11 @@ public class MainModule {
 
     @MainScope
     @Provides
+    @Named("PostRecyclerAdapter")
     static PostRecyclerAdapter provideAdapter(){
         return new PostRecyclerAdapter();
     }
+
 
 //    @MainScope
 //    @Provides
