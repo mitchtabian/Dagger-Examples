@@ -46,14 +46,6 @@ public class AuthActivity extends DaggerAppCompatActivity implements
     @Inject
     RequestManager requestManager;
 
-//    @Inject
-//    @Named("login_user")
-//    User loginUser;
-
-//    @Inject
-//    @Named("app_user")
-//    User appUser;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,23 +56,9 @@ public class AuthActivity extends DaggerAppCompatActivity implements
         findViewById(R.id.login_button).setOnClickListener(this);
 
         setTitle("Auth Scope");
-
         viewModel = ViewModelProviders.of(this, providerFactory).get(AuthViewModel.class);
-
         subscribeObservers();
-
-
-        // Dagger demos
-        if(logo == null){
-            Log.d(TAG, "onCreate: drawable is null.");
-        }
-        else {
-            Log.d(TAG, "onCreate: drawable is NOT null.");
-            setLogo();
-        }
-//
-//        Log.d(TAG, "onCreate: login user: " + loginUser);
-//        Log.d(TAG, "onCreate: app user: " + appUser);
+        setLogo();
     }
 
     private void setLogo(){

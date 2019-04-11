@@ -1,18 +1,14 @@
 package com.codingwithmitch.daggerpractice.ui.main;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.codingwithmitch.daggerpractice.BaseActivity;
 import com.codingwithmitch.daggerpractice.R;
 import com.google.android.material.navigation.NavigationView;
 
-
-import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,36 +30,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private NavigationView navigationView;
     private NavController navController;
 
-//    @Inject
-//    @Named("main_string")
-//    String someRandomString;
-
-//    @Inject
-//    @Named("login_user")
-//    User user;
-
-//    @Inject
-//    LinearLayoutManager layoutManager;
-
-//    @Inject
-//    ProfileFragment profileFragment;
-//
-//    @Inject
-//    PostsFragment postsFragment;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-
-//        Log.d(TAG, "onCreate: " + someRandomString);
-//        Log.d(TAG, "onCreate: authenticated user: " + user.getEmail());
-
-//        Log.d(TAG, "onCreate: layout manger: " + layoutManager);
-
-        Log.d(TAG, "MainActivity: session manager memory location: " + sessionManager);
 
         init();
     }

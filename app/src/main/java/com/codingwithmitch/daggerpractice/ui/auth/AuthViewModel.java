@@ -5,14 +5,12 @@ import android.util.Log;
 import com.codingwithmitch.daggerpractice.SessionManager;
 import com.codingwithmitch.daggerpractice.models.User;
 import com.codingwithmitch.daggerpractice.network.auth.AuthApi;
-import com.codingwithmitch.daggerpractice.util.Resource;
 
 import javax.inject.Inject;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.ViewModel;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 

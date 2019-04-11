@@ -5,7 +5,6 @@ import android.app.Application;
 
 import com.codingwithmitch.daggerpractice.BaseApplication;
 import com.codingwithmitch.daggerpractice.SessionManager;
-import com.codingwithmitch.daggerpractice.models.User;
 
 import javax.inject.Singleton;
 

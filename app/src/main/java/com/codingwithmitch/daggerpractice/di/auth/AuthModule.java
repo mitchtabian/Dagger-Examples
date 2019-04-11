@@ -10,19 +10,6 @@ import retrofit2.Retrofit;
 @Module
 public abstract class AuthModule {
 
-//    @AuthScope
-//    @Provides
-//    @Named("login_user")
-//    static User provideUser(){
-//        return new User();
-//    }
-
-//    @Provides
-//    @Named("login_user")
-//    static User provideUser(User user){
-//        return user;
-//    }
-
     @AuthScope
     @Provides
     static AuthApi provideSessionApi(Retrofit retrofit){

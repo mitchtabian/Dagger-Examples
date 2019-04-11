@@ -93,7 +93,6 @@ public class PostsFragment extends DaggerFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         VerticalSpaceItemDecoration itemDecoration = new VerticalSpaceItemDecoration(15);
         recyclerView.addItemDecoration(itemDecoration);
-//        adapter = new PostRecyclerAdapter();
         recyclerView.setAdapter(adapter);
     }
 

@@ -14,10 +14,7 @@ import com.codingwithmitch.daggerpractice.di.main.MainScope;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
-//@Module(
-//        subcomponents = {
-//                MainComponent.class
-//        })
+
 @Module
 public abstract class ActivityBuildersModule {
 
@@ -25,11 +22,6 @@ public abstract class ActivityBuildersModule {
     @ContributesAndroidInjector(
             modules = {AuthModule.class, AuthViewModelsModule.class})
     abstract AuthActivity contributeAuthActivity();
-
-//    @Binds
-//    @IntoMap
-//    @ClassKey(MainActivity.class)
-//    abstract AndroidInjector.Factory<?> bindMainActivityInjectorFactory(MainComponent.Factory factory);
 
     /*
       NOTE:

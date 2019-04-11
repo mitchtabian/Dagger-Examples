@@ -60,12 +60,6 @@ public class AppModule {
         return ContextCompat.getDrawable(application, R.drawable.logo);
     }
 
-//    @Singleton
-//    @Provides
-//    @Named("app_user")
-//    static User provideUser(){
-//        return new User();
-//    }
 }
 
 
