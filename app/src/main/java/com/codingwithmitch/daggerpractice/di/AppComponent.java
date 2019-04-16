@@ -5,13 +5,13 @@ import android.app.Application;
 
 import com.codingwithmitch.daggerpractice.BaseApplication;
 import com.codingwithmitch.daggerpractice.SessionManager;
+import com.codingwithmitch.daggerpractice.di.auth.AuthActivitySubcomponent;
 
 import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
 
-import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
@@ -19,7 +19,6 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Component(
         modules = {
                 AndroidSupportInjectionModule.class,
-                AndroidInjectionModule.class,
                 AppModule.class,
                 ActivityBuildersModule.class,
                 ViewModelFactoryModule.class,
@@ -27,6 +26,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
 public interface AppComponent extends AndroidInjector<BaseApplication> {
 
     SessionManager sessionManager();
+
+    AuthActivitySubcomponent.Factory authSubcomponent();
 
     @Component.Builder
     interface Builder {

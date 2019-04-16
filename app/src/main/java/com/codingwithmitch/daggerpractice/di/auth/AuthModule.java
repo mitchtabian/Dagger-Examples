@@ -1,7 +1,10 @@
 package com.codingwithmitch.daggerpractice.di.auth;
 
 
+import com.codingwithmitch.daggerpractice.models.User;
 import com.codingwithmitch.daggerpractice.network.auth.AuthApi;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

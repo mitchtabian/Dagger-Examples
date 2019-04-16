@@ -7,6 +7,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.codingwithmitch.daggerpractice.R;
+import com.codingwithmitch.daggerpractice.di.auth.AuthScope;
+import com.codingwithmitch.daggerpractice.models.User;
 import com.codingwithmitch.daggerpractice.util.Constants;
 
 import javax.inject.Singleton;
@@ -45,12 +47,6 @@ public class AppModule {
     static RequestManager provideGlideInstance(Application application, RequestOptions requestOptions){
         return Glide.with(application)
                 .setDefaultRequestOptions(requestOptions);
-    }
-
-    @Singleton
-    @Provides
-    static String provideRandomString(){
-        return "This is a random string from the APP module.";
     }
 
 

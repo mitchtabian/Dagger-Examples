@@ -41,6 +41,7 @@ public class AuthViewModel extends ViewModel {
     }
 
     private LiveData<AuthResource<User>> queryUserId(int userId) {
+
         return LiveDataReactiveStreams.fromPublisher(sessionApi.getUser(userId)
 
                 // instead of calling onError, do this
