@@ -18,8 +18,6 @@ import dagger.android.support.AndroidSupportInjectionModule;
         })
 public interface AppComponent extends AndroidInjector<BaseApplication> {
 
-    Application getApplication();
-
     @Component.Builder
     interface Builder{
 
