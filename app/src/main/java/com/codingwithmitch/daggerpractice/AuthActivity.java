@@ -1,5 +1,8 @@
 package com.codingwithmitch.daggerpractice;
 
+import androidx.appcompat.app.AppCompatActivity;
+import dagger.android.AndroidInjection;
+import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerAppCompatActivity;
 
 import android.graphics.drawable.Drawable;
@@ -35,13 +38,3 @@ public class AuthActivity extends DaggerAppCompatActivity {
                 .into((ImageView)findViewById(R.id.login_logo));
     }
 }
-
-
-
-
-
-
-
-
-
-
