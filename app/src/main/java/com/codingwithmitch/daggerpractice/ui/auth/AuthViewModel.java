@@ -24,6 +24,7 @@ public class AuthViewModel extends ViewModel {
         Log.d(TAG, "AuthViewModel: viewmodel is working...");
 
         authApi.getUser(1)
+				.toObservable()
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<User>() {
                     @Override
