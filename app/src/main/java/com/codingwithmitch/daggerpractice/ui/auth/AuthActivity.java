@@ -1,14 +1,10 @@
 package com.codingwithmitch.daggerpractice.ui.auth;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
-import dagger.android.AndroidInjection;
-import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerAppCompatActivity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.RequestManager;
