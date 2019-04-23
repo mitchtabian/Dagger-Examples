@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import com.codingwithmitch.daggerpractice.BaseActivity;
 import com.codingwithmitch.daggerpractice.R;
+import com.codingwithmitch.daggerpractice.ui.main.profile.ProfileFragment;
 
 import androidx.annotation.Nullable;
 
@@ -18,6 +19,14 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        testFragment();
+    }
+
+    private void testFragment(){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_container, new ProfileFragment())
+                .commit();
     }
 
     @Override
