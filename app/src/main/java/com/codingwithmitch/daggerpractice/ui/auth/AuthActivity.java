@@ -1,12 +1,10 @@
 package com.codingwithmitch.daggerpractice.ui.auth;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import dagger.android.AndroidInjection;
-import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerAppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,6 +18,7 @@ import android.widget.Toast;
 import com.bumptech.glide.RequestManager;
 import com.codingwithmitch.daggerpractice.R;
 import com.codingwithmitch.daggerpractice.models.User;
+import com.codingwithmitch.daggerpractice.ui.main.MainActivity;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
@@ -73,6 +72,7 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                         case AUTHENTICATED:{
                             showProgressBar(false);
                             Log.d(TAG, "onChanged: LOGIN SUCCESS: " + userAuthResource.data.getEmail());
+                            onLoginSuccess();
                             break;
                         }
 
@@ -91,6 +91,13 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                 }
             }
         });
+    }
+
+    private void onLoginSuccess(){
+        Log.d(TAG, "onLoginSuccess: login successful!");
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showProgressBar(boolean isVisible){
