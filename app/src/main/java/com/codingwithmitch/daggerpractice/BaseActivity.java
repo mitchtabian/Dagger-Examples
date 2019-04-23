@@ -4,6 +4,9 @@ package com.codingwithmitch.daggerpractice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import com.codingwithmitch.daggerpractice.models.User;
 import com.codingwithmitch.daggerpractice.ui.auth.AuthActivity;
@@ -12,6 +15,7 @@ import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import dagger.android.support.DaggerAppCompatActivity;
 
