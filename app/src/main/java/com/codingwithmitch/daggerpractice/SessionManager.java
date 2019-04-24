@@ -36,9 +36,6 @@ public class SessionManager {
                 }
             });
         }
-        else{
-            Log.d(TAG, "authenticateWithId: previous session detected. Retrieving user from cache.");
-        }
     }
 
     public void logOut() {
