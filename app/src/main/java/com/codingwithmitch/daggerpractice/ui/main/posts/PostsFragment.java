@@ -46,7 +46,7 @@ public class PostsFragment extends DaggerFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        Log.d(TAG, "onViewCreated: PostsFragment created... " + this);
         recyclerView = view.findViewById(R.id.recycler_view);
 
         viewModel = ViewModelProviders.of(this, providerFactory).get(PostsViewModel.class);

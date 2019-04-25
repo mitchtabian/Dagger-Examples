@@ -40,7 +40,7 @@ public class ProfileFragment extends DaggerFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Log.d(TAG, "onViewCreated: ProfileFragment was created...");
+        Log.d(TAG, "onViewCreated: ProfileFragment was created..." + this);
         email = view.findViewById(R.id.email);
         username = view.findViewById(R.id.username);
         website = view.findViewById(R.id.website);
