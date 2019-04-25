@@ -8,6 +8,7 @@ import retrofit2.http.Path;
 
 public interface AuthApi {
 
+    // /users/id
     @GET("users/{id}")
     Flowable<User> getUser(
             @Path("id") int id

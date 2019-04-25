@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.codingwithmitch.daggerpractice.R;
-import com.codingwithmitch.daggerpractice.SessionManager;
 import com.codingwithmitch.daggerpractice.util.Constants;
 
 import javax.inject.Singleton;
@@ -54,19 +53,3 @@ public class AppModule {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

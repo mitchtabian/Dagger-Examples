@@ -28,7 +28,6 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
     private static final String TAG = "AuthActivity";
 
     private AuthViewModel viewModel;
-
     private EditText userId;
     private ProgressBar progressBar;
 
@@ -63,7 +62,6 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
             public void onChanged(AuthResource<User> userAuthResource) {
                 if(userAuthResource != null){
                     switch (userAuthResource.status){
-
                         case LOADING:{
                             showProgressBar(true);
                             break;
@@ -77,9 +75,12 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                         }
 
                         case ERROR:{
+                            Log.e(TAG, "onChanged: " + userAuthResource.message);
                             showProgressBar(false);
-                            Toast.makeText(AuthActivity.this, userAuthResource.message
-                                    + "\nDid you enter a number between 1 and 10?", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AuthActivity.this,
+                                    userAuthResource.message + "\nDid you enter a number between 0 and 10?",
+                                    Toast.LENGTH_SHORT)
+                                    .show();
                             break;
                         }
 
@@ -94,19 +95,9 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
     }
 
     private void onLoginSuccess(){
-        Log.d(TAG, "onLoginSuccess: login successful!");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    private void showProgressBar(boolean isVisible){
-        if(isVisible){
-            progressBar.setVisibility(View.VISIBLE);
-        }
-        else{
-            progressBar.setVisibility(View.GONE);
-        }
     }
 
     private void setLogo(){
@@ -115,22 +106,29 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                 .into((ImageView)findViewById(R.id.login_logo));
     }
 
+    private void attemptLogin(){
+        if (TextUtils.isEmpty(userId.getText().toString())) {
+            return;
+        }
+        viewModel.authenticateWithId(Integer.parseInt(userId.getText().toString()));
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
 
             case R.id.login_button:{
-
                 attemptLogin();
                 break;
             }
         }
     }
 
-    private void attemptLogin() {
-        if(TextUtils.isEmpty(userId.getText().toString())){
-            return;
+    private void showProgressBar(boolean isVisible){
+        if(isVisible){
+            progressBar.setVisibility(View.VISIBLE);
+        }else{
+            progressBar.setVisibility(View.GONE);
         }
-        viewModel.authenticateWithId(Integer.parseInt(userId.getText().toString()));
     }
 }

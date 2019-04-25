@@ -1,5 +1,6 @@
 package com.codingwithmitch.daggerpractice.ui.auth;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -40,3 +41,20 @@ public class AuthResource<T> {
     public enum AuthStatus { AUTHENTICATED, ERROR, LOADING, NOT_AUTHENTICATED}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

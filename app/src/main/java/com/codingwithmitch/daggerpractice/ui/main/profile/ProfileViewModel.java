@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModel;
 
 public class ProfileViewModel extends ViewModel {
 
-    private static final String TAG = "DaggerExample";
+    private static final String TAG = "ProfileViewModel";
 
     private final SessionManager sessionManager;
 
@@ -27,15 +27,6 @@ public class ProfileViewModel extends ViewModel {
         return sessionManager.getAuthUser();
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 

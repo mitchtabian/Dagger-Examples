@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.codingwithmitch.daggerpractice.BaseActivity;
 import com.codingwithmitch.daggerpractice.R;
@@ -38,23 +39,18 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.logout:
+
+        switch (item.getItemId()){
+
+            case R.id.logout:{
                 sessionManager.logOut();
                 return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            }
         }
+
+        return super.onOptionsItemSelected(item);
     }
 }
-
-
-
-
-
-
-
 
 
 

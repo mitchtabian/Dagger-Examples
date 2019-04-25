@@ -13,7 +13,6 @@ import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -22,26 +21,22 @@ public class AuthViewModel extends ViewModel {
     private static final String TAG = "AuthViewModel";
 
     // inject
-    private final SessionManager sessionManager; // @Singleton scoped dependency
-    private final AuthApi authApi; // @AuthScope scoped dependency
+    private final AuthApi authApi;
+    private SessionManager sessionManager;
 
     @Inject
     public AuthViewModel(AuthApi authApi, SessionManager sessionManager) {
-        this.sessionManager = sessionManager;
         this.authApi = authApi;
+        this.sessionManager = sessionManager;
         Log.d(TAG, "AuthViewModel: viewmodel is working...");
     }
 
-    public LiveData<AuthResource<User>> observeAuthState(){
-        return sessionManager.getAuthUser();
-    }
-
-    public void authenticateWithId(int userId) {
-        Log.d(TAG, "attemptLogin: attempting to login.");
+    public void authenticateWithId(int userId){
+        Log.d(TAG, "authenticateWithId: attempting to login.");
         sessionManager.authenticateWithId(queryUserId(userId));
     }
 
-    private LiveData<AuthResource<User>> queryUserId(int userId) {
+    private LiveData<AuthResource<User>> queryUserId(int userId){
 
         return LiveDataReactiveStreams.fromPublisher(authApi.getUser(userId)
 
@@ -68,8 +63,18 @@ public class AuthViewModel extends ViewModel {
                 .subscribeOn(Schedulers.io()));
     }
 
-
+    public LiveData<AuthResource<User>> observeAuthState(){
+        return sessionManager.getAuthUser();
+    }
 }
+
+
+
+
+
+
+
+
 
 
 

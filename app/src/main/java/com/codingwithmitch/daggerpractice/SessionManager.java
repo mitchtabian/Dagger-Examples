@@ -15,17 +15,15 @@ import androidx.lifecycle.Observer;
 @Singleton
 public class SessionManager {
 
-    private static final String TAG = "DaggerExample";
+    private static final String TAG = "SessionManager";
 
-    // data
     private MediatorLiveData<AuthResource<User>> cachedUser = new MediatorLiveData<>();
 
     @Inject
     public SessionManager() {
-
     }
 
-    public void authenticateWithId(final LiveData<AuthResource<User>> source) {
+    public void authenticateWithId(final LiveData<AuthResource<User>> source){
         if(cachedUser != null){
             cachedUser.setValue(AuthResource.loading((User)null));
             cachedUser.addSource(source, new Observer<AuthResource<User>>() {
@@ -36,19 +34,23 @@ public class SessionManager {
                 }
             });
         }
+        else{
+            Log.d(TAG, "authenticateWithId: previous session detected. Retrieving user from cache.");
+        }
     }
 
-    public void logOut() {
+    public void logOut(){
         Log.d(TAG, "logOut: logging out...");
         cachedUser.setValue(AuthResource.<User>logout());
     }
 
-
     public LiveData<AuthResource<User>> getAuthUser(){
         return cachedUser;
     }
-
 }
+
+
+
 
 
 
