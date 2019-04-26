@@ -7,6 +7,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.codingwithmitch.daggerpractice.R;
+import com.codingwithmitch.daggerpractice.di.auth.AuthScope;
+import com.codingwithmitch.daggerpractice.models.User;
 import com.codingwithmitch.daggerpractice.util.Constants;
 
 import javax.inject.Singleton;
@@ -52,4 +54,9 @@ public class AppModule {
         return ContextCompat.getDrawable(application, R.drawable.logo);
     }
 
+//    @Singleton
+//    @Provides
+//    static User someUser(){
+//        return new User();
+//    }
 }
