@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dagger.android.support.DaggerFragment;
+import io.reactivex.disposables.Disposable;
 
 public class PostsFragment extends DaggerFragment {
 
