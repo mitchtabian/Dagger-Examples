@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.codingwithmitch.daggerpractice.R;
-import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
 import com.codingwithmitch.daggerpractice.models.User;
+import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
 import com.codingwithmitch.daggerpractice.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
@@ -22,14 +22,13 @@ import dagger.android.support.DaggerFragment;
 
 public class ProfileFragment extends DaggerFragment {
 
-    private static final String TAG = "DaggerExample";
+    private static final String TAG = "ProfileFragment";
 
     private ProfileViewModel viewModel;
     private TextView email, username, website;
 
     @Inject
     ViewModelProviderFactory providerFactory;
-
 
     @Nullable
     @Override
@@ -43,6 +42,7 @@ public class ProfileFragment extends DaggerFragment {
         email = view.findViewById(R.id.email);
         username = view.findViewById(R.id.username);
         website = view.findViewById(R.id.website);
+
         viewModel = ViewModelProviders.of(this, providerFactory).get(ProfileViewModel.class);
 
         subscribeObservers();
@@ -55,10 +55,7 @@ public class ProfileFragment extends DaggerFragment {
             public void onChanged(AuthResource<User> userAuthResource) {
                 if(userAuthResource != null){
                     switch (userAuthResource.status){
-                        case LOADING:{
-                            Log.d(TAG, "onChanged: ProfileFragment: LOADING...");
-                            break;
-                        }
+
 
                         case AUTHENTICATED:{
                             Log.d(TAG, "onChanged: ProfileFragment: AUTHENTICATED... " +
@@ -69,11 +66,7 @@ public class ProfileFragment extends DaggerFragment {
 
                         case ERROR:{
                             Log.d(TAG, "onChanged: ProfileFragment: ERROR...");
-                            break;
-                        }
-
-                        case NOT_AUTHENTICATED:{
-                            Log.d(TAG, "onChanged: ProfileFragment: NOT AUTHENTICATED.");
+                            setErrorDetails(userAuthResource.message);
                             break;
                         }
                     }
@@ -82,20 +75,18 @@ public class ProfileFragment extends DaggerFragment {
         });
     }
 
+    private void setErrorDetails(String message){
+        email.setText(message);
+        username.setText("error");
+        website.setText("error");
+    }
+
     private void setUserDetails(User user){
         email.setText(user.getEmail());
         username.setText(user.getUsername());
         website.setText(user.getWebsite());
     }
 }
-
-
-
-
-
-
-
-
 
 
 

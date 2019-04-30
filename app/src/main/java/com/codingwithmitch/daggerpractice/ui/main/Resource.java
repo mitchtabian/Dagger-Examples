@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggerpractice.util;
+package com.codingwithmitch.daggerpractice.ui.main;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

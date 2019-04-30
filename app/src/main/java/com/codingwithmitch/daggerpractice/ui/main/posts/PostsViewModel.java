@@ -5,9 +5,9 @@ import android.util.Log;
 import com.codingwithmitch.daggerpractice.SessionManager;
 import com.codingwithmitch.daggerpractice.models.Post;
 import com.codingwithmitch.daggerpractice.network.main.MainApi;
-import com.codingwithmitch.daggerpractice.util.Resource;
+import com.codingwithmitch.daggerpractice.ui.main.Resource;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,8 +22,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class PostsViewModel extends ViewModel {
 
-    private static final String TAG = "DaggerExample";
+    private static final String TAG = "PostsViewModel";
 
+    // inject
     private final SessionManager sessionManager;
     private final MainApi mainApi;
 
@@ -33,23 +34,46 @@ public class PostsViewModel extends ViewModel {
     public PostsViewModel(SessionManager sessionManager, MainApi mainApi) {
         this.sessionManager = sessionManager;
         this.mainApi = mainApi;
-        Log.d(TAG, "PostsViewModel: viewmodel is ready...");
+        Log.d(TAG, "PostsViewModel: viewmodel is working...");
     }
 
     public LiveData<Resource<List<Post>>> observePosts(){
-        if(posts == null) {
+        if(posts == null){
             posts = new MediatorLiveData<>();
-            posts.setValue(Resource.loading((List<Post>) null));
+            posts.setValue(Resource.loading((List<Post>)null));
 
             final LiveData<Resource<List<Post>>> source = LiveDataReactiveStreams.fromPublisher(
+
                     mainApi.getPostsFromUser(sessionManager.getAuthUser().getValue().data.getId())
-                            .map(new Function<List<Post>, Resource<List<Post>>>() {
-                                @Override
-                                public Resource<List<Post>> apply(List<Post> posts) throws Exception {
-                                    return Resource.success(posts);
+
+                    .onErrorReturn(new Function<Throwable, List<Post>>() {
+                        @Override
+                        public List<Post> apply(Throwable throwable) throws Exception {
+                            Log.e(TAG, "apply: ", throwable);
+                            Post post = new Post();
+                            post.setId(-1);
+                            ArrayList<Post> posts = new ArrayList<>();
+                            posts.add(post);
+                            return posts;
+                        }
+                    })
+
+                    .map(new Function<List<Post>, Resource<List<Post>>>() {
+                        @Override
+                        public Resource<List<Post>> apply(List<Post> posts) throws Exception {
+
+                            if(posts.size() > 0){
+                                if(posts.get(0).getId() == -1){
+                                    return Resource.error("Something went wrong", null);
                                 }
-                            })
-                            .subscribeOn(Schedulers.io()));
+                            }
+
+                            return Resource.success(posts);
+                        }
+                    })
+
+                    .subscribeOn(Schedulers.io())
+            );
 
             posts.addSource(source, new Observer<Resource<List<Post>>>() {
                 @Override
@@ -61,6 +85,7 @@ public class PostsViewModel extends ViewModel {
         }
         return posts;
     }
+
 }
 
 

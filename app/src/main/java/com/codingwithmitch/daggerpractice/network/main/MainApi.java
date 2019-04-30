@@ -1,13 +1,11 @@
 package com.codingwithmitch.daggerpractice.network.main;
 
 import com.codingwithmitch.daggerpractice.models.Post;
-import com.codingwithmitch.daggerpractice.models.User;
 
 import java.util.List;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MainApi {

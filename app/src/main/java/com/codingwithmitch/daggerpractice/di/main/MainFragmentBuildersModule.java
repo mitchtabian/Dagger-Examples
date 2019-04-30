@@ -1,5 +1,6 @@
 package com.codingwithmitch.daggerpractice.di.main;
 
+
 import com.codingwithmitch.daggerpractice.ui.main.posts.PostsFragment;
 import com.codingwithmitch.daggerpractice.ui.main.profile.ProfileFragment;
 

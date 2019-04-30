@@ -1,9 +1,7 @@
 package com.codingwithmitch.daggerpractice.di.main;
 
 import com.codingwithmitch.daggerpractice.network.main.MainApi;
-import com.codingwithmitch.daggerpractice.ui.main.posts.PostRecyclerAdapter;
-
-import javax.inject.Named;
+import com.codingwithmitch.daggerpractice.ui.main.posts.PostsRecyclerAdapter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -14,36 +12,13 @@ public class MainModule {
 
     @MainScope
     @Provides
-    static MainApi provideMainApi(Retrofit retrofit){
-        return retrofit.create(MainApi.class);
+    static PostsRecyclerAdapter provideAdapter(){
+        return new PostsRecyclerAdapter();
     }
-
 
     @MainScope
     @Provides
-    @Named("PostRecyclerAdapter")
-    static PostRecyclerAdapter provideAdapter(){
-        return new PostRecyclerAdapter();
+    static MainApi provideMainApi(Retrofit retrofit){
+        return retrofit.create(MainApi.class);
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,8 +2,8 @@ package com.codingwithmitch.daggerpractice;
 
 import android.util.Log;
 
-import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
 import com.codingwithmitch.daggerpractice.models.User;
+import com.codingwithmitch.daggerpractice.ui.auth.AuthResource;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -36,23 +36,6 @@ public class SessionManager {
                 }
             });
         }
-        else{
-            Log.d(TAG, "authenticateWithId: previous session detected. Retrieving user from cache.");
-        }
-    }
-
-    public boolean isLoggedIn() {
-        return !isCachedUserNull();
-    }
-
-    private boolean isCachedUserNull(){
-        if(cachedUser == null){
-            return true;
-        }
-        if(cachedUser.getValue() == null){
-            return true;
-        }
-        return false;
     }
 
     public void logOut() {
@@ -66,8 +49,6 @@ public class SessionManager {
     }
 
 }
-
-
 
 
 

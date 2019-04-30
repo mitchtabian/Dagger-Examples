@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.codingwithmitch.daggerpractice.R;
-import com.codingwithmitch.daggerpractice.di.main.MainScope;
+
 import com.codingwithmitch.daggerpractice.models.Post;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PostRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class PostsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Post> posts = new ArrayList<>();
 
@@ -55,27 +55,6 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

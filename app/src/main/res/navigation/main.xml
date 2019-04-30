@@ -3,22 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    app:startDestination="@+id/profileScreen">
+    app:startDestination="@+id/profileScreen"
+    >
 
     <fragment
         android:id="@+id/profileScreen"
         android:name="com.codingwithmitch.daggerpractice.ui.main.profile.ProfileFragment"
-        android:label="@string/fragment_profile"
-        tools:layout="@layout/fragment_profile">
-    </fragment>
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile"/>
 
     <fragment
         android:id="@+id/postsScreen"
         android:name="com.codingwithmitch.daggerpractice.ui.main.posts.PostsFragment"
-        android:label="@string/fragment_posts"
-        tools:layout="@layout/fragment_posts">
-    </fragment>
+        android:label="@string/posts"
+        tools:layout="@layout/fragment_posts"/>
+
 
 </navigation>
-
-
