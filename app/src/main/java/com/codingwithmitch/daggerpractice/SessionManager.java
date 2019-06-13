@@ -33,6 +33,10 @@ public class SessionManager {
                 public void onChanged(AuthResource<User> userAuthResource) {
                     cachedUser.setValue(userAuthResource);
                     cachedUser.removeSource(source);
+
+                    if(userAuthResource.status.equals(AuthResource.AuthStatus.ERROR)){
+                        cachedUser.setValue(AuthResource.<User>logout());
+                    }
                 }
             });
         }
