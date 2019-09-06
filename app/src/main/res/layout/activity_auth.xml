@@ -22,6 +22,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:hint="User id"
+        android:inputType="number"
         android:textColor="#000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
