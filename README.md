@@ -9,7 +9,7 @@
 <ul>
 <li><strong>Every line of code is written and explained on video</strong></li>
 <li>Dagger version 2.2+ (Focus on Dagger-Android)</li>
-<li>Dagger basics:
+<li>Dagger-android basics:
   <ol>
     <li>DaggerApplication</li>
     <li>DaggerAppCompatActivity </li>
